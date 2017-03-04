@@ -54,30 +54,31 @@ public class Controller extends HttpServlet {
             // get parameters passed in from the request
             String email = request.getParameter("email");
             String size = request.getParameter("size");
-            String[] toppingArray = request.getParameterValues("toppings");
+            String[] toppingsArray = request.getParameterValues("toppings");
+            String crust = request.getParameter("crust");
 
             // convert toppingArray to a comma separated string
             String toppings = "none";
-            if (toppingArray != null && toppingArray.length > 0) {
+            if (toppingsArray != null && toppingsArray.length > 0) {
                 // we have at least 1 topping; reset toppings to ""
                 toppings = "";
-                if (toppingArray.length == 1) {
+                if (toppingsArray.length == 1) {
                     // single topping with no commas
-                    toppings = toppingArray[0];
-                } else if (toppingArray.length > 1) {
+                    toppings = toppingsArray[0];
+                } else if (toppingsArray.length > 1) {
                     // separate multiple toppings with commas
-                    for (int i = 0; i < toppingArray.length - 1; i++) {
-                        toppings += toppingArray[i] + ", ";
+                    for (int i = 0; i < toppingsArray.length - 1; i++) {
+                        toppings += toppingsArray[i] + ", ";
                     }
                     // the last topping does not have a comma after
-                    toppings += toppingArray[toppingArray.length - 1];
+                    toppings += toppingsArray[toppingsArray.length - 1];
                 }
             }
-
+            
             // store data in an PizzaOrder object
             // the PizzaOrder class is part of the MVC model 
             // as is the DAO (data access object)
-            PizzaOrder myOrder = new PizzaOrder(email, size, toppings);
+            PizzaOrder myOrder = new PizzaOrder(email, size, toppings, crust);
             System.out.println("Controller:order:pizza=" + myOrder);
 
             // validate the parameters

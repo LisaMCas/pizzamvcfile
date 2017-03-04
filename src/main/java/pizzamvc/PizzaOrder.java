@@ -10,17 +10,20 @@ public class PizzaOrder {
     private String email;
     private String size;
     private String toppings;
+    private String crust;
 
     public PizzaOrder() {
         email = "";
         size = "";
         toppings = null;
+        crust = null;
     }
 
-    public PizzaOrder(String email, String size, String toppings) {
+    public PizzaOrder(String email, String size, String toppings, String crust) {
         this.email = email;
         this.size = size;
         this.toppings = toppings;
+        this.crust = crust;
     }
 
     public String getToppings() {
@@ -46,10 +49,17 @@ public class PizzaOrder {
     public void setSize(String size) {
         this.size = size;
     }
+    public String getCrust() {
+        return crust;
+    }
 
+    public void setCrust(String crust) {
+        this.crust = crust;
+    }  
+    
     @Override
     public String toString() {
         return "PizzaOrder{" + "email=" + email + ", size=" + size
-                + ", toppings=" + toppings + '}';
+                + ", toppings=" + toppings + ", crust=" + crust + '}';
     }
 }
