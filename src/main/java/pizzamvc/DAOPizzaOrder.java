@@ -40,9 +40,9 @@ public class DAOPizzaOrder {
             String[] lineArray = line.split("[|]");
             String email = lineArray[0];
             String size = lineArray[1];
-            String toppings = lineArray[2];
-            String crust = lineArray[3];
-            PizzaOrder order = new PizzaOrder(email, size, toppings, crust);
+            String crust = lineArray[2];
+            String toppings = lineArray[3];
+            PizzaOrder order = new PizzaOrder(email, size, crust, toppings );
             list.add(order);
         }
 //        System.out.println("list=" + list);
